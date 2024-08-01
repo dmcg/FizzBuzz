@@ -5,13 +5,16 @@ fun main() {
 }
 
 fun fizzBuzz(rounds: Int): List<String> =
-    (1..rounds).map { round ->
+    fizzBuzzSequence().take(rounds).toList()
+
+fun fizzBuzzSequence(): Sequence<String> =
+    generateSequence(1L) { it + 1 }.map { round ->
         round.toFizzBuzz()
     }
 
-internal fun Int.toFizzBuzz(): String = when {
-    this % 15 == 0 -> "FizzBuzz"
-    this % 3 == 0 -> "Fizz"
-    this % 5 == 0 -> "Buzz"
+internal fun Long.toFizzBuzz(): String = when {
+    this % 15L == 0L -> "FizzBuzz"
+    this % 3L == 0L -> "Fizz"
+    this % 5L == 0L -> "Buzz"
     else -> toString()
 }

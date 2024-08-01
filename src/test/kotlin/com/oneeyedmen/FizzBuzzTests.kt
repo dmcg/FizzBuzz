@@ -54,3 +54,6 @@ class FizzBuzzTests {
     }
 }
 
+private fun Int.toFizzBuzz(): String =
+    this.toLong().toFizzBuzz()
+
