@@ -1,6 +1,5 @@
 package com.oneeyedmen
 
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
@@ -8,16 +7,19 @@ import kotlin.test.assertEquals
 
 class FizzBuzzAcceptanceTests {
     @Test
-    @Disabled("Not finished yet")
     fun `prints fizzbuzz up to 100`() {
         val stdOutResult = capturingStdOut {
             main()
         }
 
+        val lines = stdOutResult.lines()
         assertEquals(
             firstLines.lines(),
-            stdOutResult.lines().take(20)
+            lines.take(20)
         )
+        assertEquals(101, lines.size)
+        assertEquals("Buzz", lines.get(99))
+        assertEquals("", lines.get(100))
     }
 }
 
@@ -42,7 +44,7 @@ private val firstLines = """
     |Fizz
     |19
     |Buzz
-    |""".trimMargin()
+ """.trimMargin()
 
 private fun capturingStdOut(function: () -> Unit): String {
     val output = ByteArrayOutputStream()
