@@ -18,8 +18,8 @@ class FizzBuzzAcceptanceTests {
             lines.take(20)
         )
         assertEquals(101, lines.size)
-        assertEquals("Buzz", lines.get(99))
-        assertEquals("", lines.get(100))
+        assertEquals("Buzz", lines[99])
+        assertEquals("", lines[100])
     }
 }
 
