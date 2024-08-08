@@ -8,11 +8,9 @@ import kotlin.test.assertEquals
 class FizzBuzzAcceptanceTests {
     @Test
     fun `prints fizzbuzz up to 100`() {
-        val stdOutResult = capturingStdOut {
-            main()
-        }
-
-        val lines = stdOutResult.lines()
+        val output = ByteArrayOutputStream()
+        fizzBuzz(PrintStream(output), 100)
+        val lines = output.toString().lines()
         assertEquals(
             firstLines.lines(),
             lines.take(20)
@@ -45,15 +43,3 @@ private val firstLines = """
     |19
     |Buzz
  """.trimMargin()
-
-private fun capturingStdOut(function: () -> Unit): String {
-    val output = ByteArrayOutputStream()
-    val oldStdOut = System.out
-    System.setOut(PrintStream(output))
-    try {
-        function.invoke()
-        return output.toString("UTF-8")
-    } finally {
-        System.setOut(oldStdOut)
-    }
-}
