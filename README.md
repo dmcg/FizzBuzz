@@ -1,4 +1,4 @@
-# Duncan TDDing the FizzBuzz Kata
+# Duncan using the FizzBuzz Kata to explore Actions and Calculations
 
 Description at [Coding Dojo](https://codingdojo.org/kata/FizzBuzz/).
 
