@@ -1,14 +1,13 @@
 package com.oneeyedmen
 
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 import kotlin.test.assertEquals
 
 class FizzBuzzAcceptanceTests {
+
     @Test
-    @Disabled("Still to be implemented")
     fun `prints fizzbuzz up to 100`() {
         val output = ByteArrayOutputStream()
         fizzBuzz(PrintStream(output))

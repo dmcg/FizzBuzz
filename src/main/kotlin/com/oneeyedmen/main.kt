@@ -7,7 +7,9 @@ fun main() {
 }
 
 fun fizzBuzz(out: Appendable) {
-    TODO("Not yet implemented")
+    for (i in 1..100) {
+        out.appendLine(fizzBuzz(i))
+    }
 }
 
 fun fizzBuzz(n: Int): String {
