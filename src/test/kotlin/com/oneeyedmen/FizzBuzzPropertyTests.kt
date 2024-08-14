@@ -9,14 +9,14 @@ class FizzBuzzPropertyTests {
     fun `fizzBuzz returns Fizz for multiples of 3`(
         @ForAll("multiplesOfThreeButNotFive") n: Int
     ) {
-        assertEquals("Fizz", fizzBuzz(n))
+        assertEquals("Fizz", n.toFizzBuzz())
     }
 
     @Property
     fun `fizzBuzz returns Buzz for multiples of 5`(
         @ForAll("multiplesOfFiveButNotThree") n: Int
     ) {
-        assertEquals("Buzz", fizzBuzz(n))
+        assertEquals("Buzz", n.toFizzBuzz())
     }
 
 
@@ -24,7 +24,7 @@ class FizzBuzzPropertyTests {
     fun `fizzBuzz returns FizzBuzz for multiples of 15`(
         @ForAll("multiplesOfFifteen") n: Int
     ) {
-        assertEquals("FizzBuzz", fizzBuzz(n))
+        assertEquals("FizzBuzz", n.toFizzBuzz())
     }
 
 
@@ -32,7 +32,7 @@ class FizzBuzzPropertyTests {
     fun `fizzBuzz returns number as string for non-multiples of 3 and 5`(
         @ForAll("nonMultiplesOfThreeAndFive") n: Int
     ) {
-        assertEquals(n.toString(), fizzBuzz(n))
+        assertEquals(n.toString(), n.toFizzBuzz())
     }
 
     @Provide

@@ -1,22 +1,27 @@
 package com.oneeyedmen
 
-import java.lang.Appendable
-
 fun main() {
     fizzBuzz(System.out)
 }
 
 fun fizzBuzz(out: Appendable) {
-    for (i in 1..100) {
-        out.appendLine(fizzBuzz(i))
-    }
+    generateFizzBuzz(1).take(100).forEach { out.appendLine(it) }
 }
 
-fun fizzBuzz(n: Int): String {
-    return when {
-        n % 15 == 0 -> "FizzBuzz"
-        n % 3 == 0 -> "Fizz"
-        n % 5 == 0 -> "Buzz"
-        else -> n.toString()
+fun generateFizzBuzz(startValue: Int): Sequence<String> =
+    sequence {
+        var i = startValue
+        while (i.isNotAboutToOverflow()) {
+            yield(i++.toFizzBuzz())
+        }
+        yield(i.toFizzBuzz())
     }
+
+private fun Int.isNotAboutToOverflow() = this + 1 > this
+
+fun Int.toFizzBuzz(): String = when {
+    this % 15 == 0 -> "FizzBuzz"
+    this % 3 == 0 -> "Fizz"
+    this % 5 == 0 -> "Buzz"
+    else -> toString()
 }
