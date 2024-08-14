@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    testImplementation("net.jqwik:jqwik:1.8.0")
 }
 
 tasks.test {
