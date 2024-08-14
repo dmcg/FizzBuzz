@@ -8,16 +8,18 @@ import kotlin.test.assertEquals
 
 class FizzBuzzAcceptanceTests {
     @Test
-    @Disabled("Not finished yet")
+    @Disabled("Still to be implemented")
     fun `prints fizzbuzz up to 100`() {
-        val stdOutResult = capturingStdOut {
-            main()
-        }
-
+        val output = ByteArrayOutputStream()
+        fizzBuzz(PrintStream(output))
+        val lines = output.toString().lines()
         assertEquals(
             firstLines.lines(),
-            stdOutResult.lines().take(20)
+            lines.take(20)
         )
+        assertEquals(101, lines.size)
+        assertEquals("Buzz", lines[99])
+        assertEquals("", lines[100])
     }
 }
 
@@ -42,16 +44,4 @@ private val firstLines = """
     |Fizz
     |19
     |Buzz
-    |""".trimMargin()
-
-private fun capturingStdOut(function: () -> Unit): String {
-    val output = ByteArrayOutputStream()
-    val oldStdOut = System.out
-    System.setOut(PrintStream(output))
-    try {
-        function.invoke()
-        return output.toString("UTF-8")
-    } finally {
-        System.setOut(oldStdOut)
-    }
-}
+ """.trimMargin()
